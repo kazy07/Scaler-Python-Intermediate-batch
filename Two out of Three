@@ -68,7 +68,7 @@ Explanation 2:
 All numbers are present in atleast 2 out of 3 lists.
 
 =================================================================================
-Solution 1
+Solution 1 python 3.5
 =================================================================================
 
 class Solution:
@@ -102,4 +102,21 @@ class Solution:
                 ans.append(i)           
         ans.sort()
         return ans
-            
+     
+======================================================================
+Solution 2 Python 3.5
+======================================================================
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @param C : list of integers
+    # @return a list of integers
+    def solve(self, A, B, C):
+        x=set(A)
+        y=set(B)
+        z=set(C)
+        ans= list(x.intersection(y)) + list(y.intersection(z)) + list(z.intersection(x))
+        ans=list(set(ans))
+        ans.sort()
+        return ans
+        
