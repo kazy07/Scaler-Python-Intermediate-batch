@@ -1,0 +1,105 @@
+Two out of Three
+
+Problem Description
+
+Given are Three arrays A, B and C.
+
+Return the sorted list of numbers that are present in atleast 2 out of the 3 arrays.
+
+
+
+Problem Constraints
+
+1 <= |A|, |B|, |C| <= 100000
+
+1 <= A[i], B[i], C[i] <= 100000
+
+A, B, C may or may not have pairwise distinct elements.
+
+
+
+Input Format
+
+First argument is the array A.
+
+First argument is the array B.
+
+First argument is the array C.
+
+
+
+Output Format
+
+Return a sorted array of numbers.
+
+
+
+Example Input
+
+Input 1:
+
+A = [1, 1, 2]
+B = [2, 3]
+C = [3]
+Input 2:
+
+A = [1, 2]
+B = [1, 3]
+C = [2, 3]
+
+
+Example Output
+
+Output 1:
+
+[2, 3]
+Output 2:
+
+[1, 2, 3]
+
+
+Example Explanation
+
+Explanation 1:
+
+1 is only present in A. 2 is present in A and B. 3 is present in B and C.
+Explanation 2:
+
+All numbers are present in atleast 2 out of 3 lists.
+
+=================================================================================
+Solution 1
+=================================================================================
+
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @param C : list of integers
+    # @return a list of integers
+    def solve(self, A, B, C):
+        x=list(set(A))
+        y=list(set(B))
+        z=list(set(C))
+        d={}
+        ans=[]
+        for i in range (len(x)):
+            if x[i] in d:
+                d[x[i]]+=1
+            else:
+                d[x[i]]=1
+        for i in range (len(y)):
+            if y[i] in d:
+                d[y[i]]+=1
+            else:
+                d[y[i]]=1
+        for i in range (len(z)):
+            if z[i] in d:
+                d[z[i]]+=1
+            else:
+                d[z[i]]=1
+        for i in d:
+            if d[i]>1:
+                ans.append(i)           
+        ans.sort()
+        return ans
+            
